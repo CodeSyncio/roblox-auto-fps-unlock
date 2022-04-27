@@ -8,8 +8,8 @@ import subprocess              #-
 
 
 #----------start of settings-------------              -------------------------------------               
-staticprocname = 'RobloxPlayerBeta.exe'#-              - robloxprocessnaam (leave it)      -                       
-HiddenMode = 0                         #-              -console zichtbaar of niet (0 of 1) -
+staticprocname = 'RobloxPlayerBeta.exe'#-              - robloxprocessname (leave it)      -                       
+HiddenMode = 0                         #-              -console visible or not (0 or 1)    -
 #----------end of settings---------------              -------------------------------------
 
 if HiddenMode == 1:
