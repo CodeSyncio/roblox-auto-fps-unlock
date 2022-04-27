@@ -5,7 +5,7 @@
 ## how to install:
 1.clone the repository to get the source code<br /><br />
 2.copy the "main.py" file to the directory of your "rbxfpsunlocker.exe" executable <br /><br />
-3.add the python script to startup with the task scheduler (`win + r` --> `taskschd.msc`) <br /><br />
+3.run the `RunMeToAddScheduledTask.py` to auto add a task OR add the python script to startup with the task scheduler (`win + r` --> `taskschd.msc`) <br /><br />
 4.make a task with "create task" , give it a name , and go to the tab "triggers" add a trigger and choose "when user logs in". then go to<br />
 the actions tab and click "new", click "browse" , go to the path of the script and select it, and press ok to add the task<br /><br />
 5. Thats it!
