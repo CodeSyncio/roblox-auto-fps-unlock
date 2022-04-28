@@ -1,16 +1,17 @@
 #---start of importing modules---
 import os                      #-
-import subprocess              #-
 from time import sleep         #-
 import ctypes                  #-
 import subprocess              #-
+import winsound                #-
 #----end of importing modules----
 
 
-#----------start of settings-------------              -------------------------------------               
-staticprocname = 'RobloxPlayerBeta.exe'#-              - robloxprocessname (leave it)      -                       
-HiddenMode = 0                         #-              -console visible or not (0 or 1)    -
-#----------end of settings---------------              -------------------------------------
+#----------start of settings-------------              -------------------------------------------            
+staticprocname = 'RobloxPlayerBeta.exe'#-              - robloxprocessname (leave it)            -                 
+HiddenMode = 0                         #-              -console visible or not (0 or 1)          -
+NotifSound = 0                         #-              -sound when the process is found (0 or 1) -             
+#----------end of settings---------------              -------------------------------------------
 
 if HiddenMode == 1:
     ctypes.windll.user32.ShowWindow( ctypes.windll.kernel32.GetConsoleWindow(), 0 )
@@ -31,7 +32,10 @@ while True:
     
     if findroblox(staticprocname) == True and StarterAlreadyStarted == 0:
         print('Roblox Process has been found!')
-
+        
+        if NotifSound == 1:
+            winsound.Beep(440, 250)
+            
         Files = os.listdir(os.getcwd()) 
         
         for file in Files:
