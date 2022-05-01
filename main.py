@@ -14,6 +14,8 @@ def maincfunction():
     staticprocname = 'RobloxPlayerBeta.exe'#-              - robloxprocessname (leave it)            -                 
     HiddenMode = 0                         #-              -console visible or not (0 or 1)          -
     NotifSound = 0                         #-              -sound when the process is found (0 or 1) -             
+    SettingsFileName = 'settings'          #-              -fps unlocker settings file (don't touch) -  
+    FastBoot = 'true'                      #-              -enable / disable fastboot (true or false)-
     #----------end of settings---------------              -------------------------------------------
 
     if HiddenMode == 1:
@@ -21,6 +23,16 @@ def maincfunction():
     else:
         pass
 
+    with open(SettingsFileName,'r',encoding='utf-8') as file:
+        
+        data = file.readlines() 
+    
+    data[8] = "QuickStart="+FastBoot
+    
+    with open(SettingsFileName, 'w', encoding='utf-8') as file:
+        
+        file.writelines(data) 
+    
     def findroblox(process_name):
         call = 'TASKLIST', '/FI', 'imagename eq %s' % process_name
 
