@@ -18,6 +18,7 @@ def maincfunction():
     FastBoot = 'true'                      #-              -enable / disable fastboot (true or false)-
     #----------end of settings---------------              -------------------------------------------
 
+    
     if HiddenMode == 1:
         ctypes.windll.user32.ShowWindow( ctypes.windll.kernel32.GetConsoleWindow(), 0 )
     else:
@@ -26,20 +27,15 @@ def maincfunction():
     with open(SettingsFileName,'r',encoding='utf-8') as file:
         
         data = file.readlines() 
-    
     data[8] = "QuickStart="+FastBoot
     
     with open(SettingsFileName, 'w', encoding='utf-8') as file:
-        
         file.writelines(data) 
     
     def findroblox(process_name):
         call = 'TASKLIST', '/FI', 'imagename eq %s' % process_name
-
         output = subprocess.check_output(call).decode()
-    
         last_line = output.strip().split('\r\n')[-1]
-    
         return last_line.lower().startswith(process_name.lower())
     
     StarterAlreadyStarted = 0
@@ -57,13 +53,10 @@ def maincfunction():
             for file in Files:
             
                 if file.startswith("rbx"): 
-                
                     GrabbedExec = file
-                
                     print('found the fpsunlocker executable!')
         
-        
-            subprocess.Popen(os.getcwd()+'/'+GrabbedExec) 
+            subprocess.Popen(f'{os.getcwd()}/{GrabbedExec}') 
         
             StarterAlreadyStarted = 1
         
@@ -71,7 +64,7 @@ def maincfunction():
     
         elif findroblox(staticprocname) == False and StarterAlreadyStarted == 1:
         
-            os.system('taskkill /im '+GrabbedExec+ ' /f')
+            os.system(f'taskkill /im {GrabbedExec} /f')
 
             StarterAlreadyStarted = 0
         
@@ -82,10 +75,6 @@ def maincfunction():
             os.system('cls')
         
         sleep(1)
-        
     
-    
-    
-
 if __name__ == "__main__":
     maincfunction()
